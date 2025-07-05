@@ -27,17 +27,21 @@ files = glob.glob(os.path.join(download_folder, filename_pattern))
 
 max_sequence = 0
 
-# Iterate over the images and extract the sequence number to continue 
 for file in files:
     filename = os.path.basename(file)
-    sequence = int(filename.split('_')[1].split('.')[0])
+
+    try:
+        seq_part = filename.split('_')[1].split('.')[0].split('-')[0]
+        sequence = int(seq_part)
+    except (IndexError, ValueError):
+        continue
+
     if sequence > max_sequence:
         max_sequence = sequence
 
 next_sequence = max_sequence + 1
-
-start_page = next_sequence # Starting index
-end_page = 0  # FİNAL İMAGE İNDEX.
+start_page    = next_sequence
+end_page      = 0 #FİNAL Image Index!
 
 rate_limit = 0.6 #(second)
 

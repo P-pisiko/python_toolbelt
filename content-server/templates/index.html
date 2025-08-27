@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+        .grid img {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        .grid img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Image Gallery</h1>
+    <div class="grid">
+        {% for image in images %}
+        <div>
+            <a href="/image/{{ image.name }}">
+                <img src="/images/{{ image.name }}" alt="{{ image.name }}">
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

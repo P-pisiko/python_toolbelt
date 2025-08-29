@@ -1,0 +1,1 @@
+## Check what functions is exported from a dll file
